@@ -15,12 +15,15 @@ public class MyBinaryTree<K extends Comparable<K>> {
         if (current == null) {
             return new MyBinaryNode<>(key);
         }
+
         int compareResult = key.compareTo(current.getKey());
+
         if (compareResult < 0) {
             current.setLeft(addRecursively(current.getLeft(), key));
         } else if (compareResult > 0) {
             current.setRight(addRecursively(current.getRight(), key));
         }
+
         return current;
     }
 
@@ -33,12 +36,35 @@ public class MyBinaryTree<K extends Comparable<K>> {
         return this.getSizeRecursively(root);
     }
 
-    // Helper method to recursively count nodes down both branches
     private int getSizeRecursively(MyBinaryNode<K> current) {
         if (current == null) {
             return 0;
         }
         return 1 + this.getSizeRecursively(current.getLeft()) + this.getSizeRecursively(current.getRight());
+    }
+
+    // UC3: Search method exposed to the user
+    public boolean search(K key) {
+        return this.searchRecursively(root, key);
+    }
+
+    // Helper method to recursively traverse and locate the key
+    private boolean searchRecursively(MyBinaryNode<K> current, K key) {
+        // Base case: key not found or tree is empty
+        if (current == null) {
+            return false;
+        }
+
+        int compareResult = key.compareTo(current.getKey());
+
+        if (compareResult == 0) {
+            return true; // Key found!
+        }
+
+        // Decide whether to search left or right branch
+        return compareResult < 0
+                ? searchRecursively(current.getLeft(), key)
+                : searchRecursively(current.getRight(), key);
     }
 
     public void printTree() {
