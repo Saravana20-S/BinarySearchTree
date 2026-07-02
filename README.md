@@ -1,15 +1,9 @@
----
-
-## 📂 Readme for Binary Search Tree Project
-
-Create a file named **`README.md`** at the root of your `BinarySearchTree/` project.
-
-```markdown
 # Custom Binary Search Tree (BST) Implementation
 
 A clean, self-contained Java data structure implementation of a generic Binary Search Tree from the ground up. The design enforces type safety by requiring keys to extend the `Comparable<K>` interface, allowing precise binary split mapping.
 
 ## Features & Core Architecture
+
 * **`MyBinaryNode<K>`**: A node setup where each element securely holds a key along with separate reference pointers for its `left` (smaller keys) and `right` (larger keys) child components.
 * **Recursive Operations**: Leverages clean algorithmic recursion for node additions, tree sizing, and multi-tier traversing.
 * **In-Order Traversal**: Includes a built-in helper method to visually verify that elements are processed in sequential, sorted order.
@@ -32,6 +26,8 @@ A clean, self-contained Java data structure implementation of a generic Binary S
 ---
 
 ## Running the Unit Tests
+
 Execute the test files inside your IDE or run the following Maven command at your project root:
+
 ```bash
 mvn test
